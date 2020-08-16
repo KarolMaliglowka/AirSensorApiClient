@@ -1,4 +1,4 @@
-# AirSensorApiClient
+# Air sensor api client
 The PomiaryPowietrza Project rewritten in dotnet core.
 
 ## Introducion
