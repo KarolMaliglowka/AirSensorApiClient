@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 
 using AirSensorApiClient.ViewModels;
@@ -16,27 +17,11 @@ namespace AirSensorApiClient
         public List<Station> GetAllStations()
         {
             const string path = url + "station/findAll";
-            var stationsList = new List<Station>();
             try
             {
                 var content = new WebClient().DownloadString(path);
-                var result = JsonConvert.DeserializeObject<Station[]>(content);
-                if (result != null)
-                {
-                    foreach (var item in result)
-                    {
-                        stationsList.Add(new Station
-                        {
-                            Id = item.Id,
-                            StationName = item.StationName,
-                            GegrLat = item.GegrLat,
-                            GegrLon = item.GegrLon,
-                            AddressStreet = item.AddressStreet,
-                            City = item.City
-                        });
-                    }
-                }
-                return stationsList;
+                var result = JsonConvert.DeserializeObject<Station[]>(content).ToList();
+                return result;
             }
             catch (Exception)
             {
@@ -44,38 +29,19 @@ namespace AirSensorApiClient
             }
         }
 
-        public List<Sensor> GetSensors(int StationId)
+        public List<Sensor> GetSensors(int stationId)
         {
-            var sensorsList = new List<Sensor>();
-            var path = url + "/station/sensors/" + StationId;
+            var path = url + "/station/sensors/" + stationId;
             try
             {
                 var content = new WebClient().DownloadString(path);
-
-                var result = JsonConvert.DeserializeObject<Sensor[]>(content);
-                if (result != null)
-                {
-                    foreach (var item in result)
-                    {
-                        sensorsList.Add(new Sensor
-                        {
-                            id = item.id,
-                            stationId = item.stationId,
-                            param = item.param
-                        });
-                    }
-                }
-
-                return sensorsList;
+                var result = JsonConvert.DeserializeObject<Sensor[]>(content).ToList();
+                return result;
             }
             catch (Exception)
             {
                 throw new ArgumentException();
             }
         }
-
-
     }
-
-
 }
