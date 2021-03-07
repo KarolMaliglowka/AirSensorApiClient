@@ -15,13 +15,14 @@ namespace AirSensorApiClient
 
         public List<Station> GetAllStations()
         {
-            var path = url + "station/findAll";
+            const string path = url + "station/findAll";
             var stationsList = new List<Station>();
             try
             {
                 var content = new WebClient().DownloadString(path);
                 var result = JsonConvert.DeserializeObject<Station[]>(content);
                 if (result != null)
+                {
                     foreach (var item in result)
                     {
                         stationsList.Add(new Station
@@ -34,7 +35,38 @@ namespace AirSensorApiClient
                             City = item.City
                         });
                     }
+                }
                 return stationsList;
+            }
+            catch (Exception)
+            {
+                throw new ArgumentException();
+            }
+        }
+
+        public List<Sensor> GetSensors(int StationId)
+        {
+            var sensorsList = new List<Sensor>();
+            var path = url + "/station/sensors/" + StationId;
+            try
+            {
+                var content = new WebClient().DownloadString(path);
+
+                var result = JsonConvert.DeserializeObject<Sensor[]>(content);
+                if (result != null)
+                {
+                    foreach (var item in result)
+                    {
+                        sensorsList.Add(new Sensor
+                        {
+                            id = item.id,
+                            stationId = item.stationId,
+                            param = item.param
+                        });
+                    }
+                }
+
+                return sensorsList;
             }
             catch (Exception)
             {
