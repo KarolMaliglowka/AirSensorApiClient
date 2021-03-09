@@ -2,8 +2,8 @@
 {
     public class Sensor
     {
-        public int id { get; set; }
-        public int stationId { get; set; }
-        public Param param { get; set; }
+        public int Id { get; set; }
+        public int StationId { get; set; }
+        public Param Param { get; set; }
     }
 }
