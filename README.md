@@ -17,3 +17,4 @@ It is a simple API client that reads the values ​​from sensors at stations m
 
 ### Used 3rd party packages:
 - Newtonsoft.Json
+:brazil:
