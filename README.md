@@ -1,4 +1,4 @@
-# PL
+#### PL
 # Klient API sensorów powietrza
 Poznaj jakość powietrza w swoim mieście
 
@@ -8,7 +8,7 @@ Jest to prosty klient API, który odczytuje wartości z czujników na stacjach m
 ### Używane pakiety innych firm:
 - Newtonsoft.Json
 
-# EN
+#### EN
 # Air sensor api client
 Get to know the air quality in your city.
 
