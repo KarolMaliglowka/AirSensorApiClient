@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace AirSensorApiClient
 {
-    public class AirSensorApiClient : IAirSensorApiClient
+    public class AirSensorApiClient
     {
         private const string Url = "http://api.gios.gov.pl/pjp-api/rest/";
 
@@ -16,9 +16,7 @@ namespace AirSensorApiClient
             var path = $"{Url}/station/findAll";
             try
             {
-                var content = new WebClient().DownloadString(path);
-                var result = JsonConvert.DeserializeObject<Station[]>(content).ToList();
-                return result;
+               return JsonConvert.DeserializeObject<Station[]>(GetContext(path)).ToList();
             }
             catch (Exception ex)
             {
@@ -31,8 +29,7 @@ namespace AirSensorApiClient
             var path = $"{Url}/station/sensors/" + stationId;
             try
             {
-                var content = new WebClient().DownloadString(path);
-                return JsonConvert.DeserializeObject<Sensor[]>(content).ToList();
+                return JsonConvert.DeserializeObject<Sensor[]>(GetContext(path)).ToList();
             }
             catch (Exception ex)
             {
@@ -46,8 +43,7 @@ namespace AirSensorApiClient
             var path = $"{Url}/data/getData/{sensorId}";
             try
             {
-                var content = new WebClient().DownloadString(path);
-                return JsonConvert.DeserializeObject<SensorsData>(content);
+                return JsonConvert.DeserializeObject<SensorsData>(GetContext(path));
             }
             catch (Exception ex)
             {
@@ -60,14 +56,17 @@ namespace AirSensorApiClient
             var path = $"{Url}/aqindex/getIndex/{StationId}";
             try
             {
-                var context = new WebClient().DownloadString(path);
-                return JsonConvert.DeserializeObject<IndexData>(context);
- 
+                return JsonConvert.DeserializeObject<IndexData>(GetContext(path));
             }
             catch (Exception ex)
             {
                 throw new ArgumentException(ex.Message);
             }
+        }
+
+        private static string GetContext(string path)
+        {
+            return new WebClient().DownloadString(path);
         }
     }
 }
