@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirSensorApiClient", "AirSensorApiClient\AirSensorApiClient.csproj", "{193C151A-4864-496F-AD7F-79AAE9590CFD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiTesting", "ApiTesting\ApiTesting.csproj", "{EE234F5C-D886-401C-9FBD-4D100D1D819F}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
