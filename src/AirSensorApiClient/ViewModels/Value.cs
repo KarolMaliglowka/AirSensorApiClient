@@ -1,8 +1,8 @@
 ﻿namespace AirSensorApiClient.ViewModels
 {
-    public class Value
+    public class DataValue
     {
         public string Date { get; set; }
-        public double value { get; set; }
+        public double? Value { get; set; }
     }
 }

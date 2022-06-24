@@ -9,11 +9,11 @@ namespace AirSensorApiClient
 {
     public class AirSensorApiClient : IAirSensorApiClient
     {
-        private const string Url = "http://api.gios.gov.pl/pjp-api/rest/";
+        private const string Url = "https://api.gios.gov.pl/pjp-api/rest/";
 
         public List<Station> GetAllStations()
         {
-            var path = $"{Url}/station/findAll";
+            var path = $"{Url}station/findAll";
             try
             {
                 var content = new WebClient().DownloadString(path);
@@ -28,7 +28,7 @@ namespace AirSensorApiClient
 
         public List<Sensor> GetSensors(int stationId)
         {
-            var path = $"{Url}/station/sensors/" + stationId;
+            var path = $"{Url}station/sensors/{stationId}";
             try
             {
                 var content = new WebClient().DownloadString(path);
@@ -40,10 +40,9 @@ namespace AirSensorApiClient
             }
         }
 
-
-        public SensorsData GetSensorData(int sensorId)
+        public static SensorsData GetSensorData(int sensorId)
         {
-            var path = $"{Url}/data/getData/{sensorId}";
+            var path = $"{Url}data/getData/{sensorId}";
             try
             {
                 var content = new WebClient().DownloadString(path);
@@ -55,14 +54,13 @@ namespace AirSensorApiClient
             }
         }
 
-        public IndexData GetIndexData(int StationId)
+        public static IndexData GetIndexData(int stationId)
         {
-            var path = $"{Url}/aqindex/getIndex/{StationId}";
+            var path = $"{Url}aqindex/getIndex/{stationId}";
             try
             {
                 var context = new WebClient().DownloadString(path);
                 return JsonConvert.DeserializeObject<IndexData>(context);
- 
             }
             catch (Exception ex)
             {
