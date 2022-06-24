@@ -40,7 +40,7 @@ namespace AirSensorApiClient
             }
         }
 
-        public static SensorsData GetSensorData(int sensorId)
+        public SensorsData GetSensorData(int sensorId)
         {
             var path = $"{Url}data/getData/{sensorId}";
             try
@@ -54,7 +54,7 @@ namespace AirSensorApiClient
             }
         }
 
-        public static IndexData GetIndexData(int stationId)
+        public IndexData GetIndexData(int stationId)
         {
             var path = $"{Url}aqindex/getIndex/{stationId}";
             try
