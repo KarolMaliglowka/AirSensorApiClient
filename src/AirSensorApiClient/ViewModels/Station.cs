@@ -2,11 +2,11 @@
 {
     public class Station
     {
-        public int Id { get; set; }
-        public string StationName { get; set; }
-        public string GegrLat { get; set; }
-        public string GegrLon { get; set; }
-        public City City { get; set; }
-        public string AddressStreet { get; set; }
+        public int id { get; set; }
+        public string stationName { get; set; }
+        public string gegrLat { get; set; }
+        public string gegrLon { get; set; }
+        public City city { get; set; }
+        public string addressStreet { get; set; }
     }
 }

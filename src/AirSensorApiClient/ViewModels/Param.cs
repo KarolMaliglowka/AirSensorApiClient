@@ -2,9 +2,9 @@
 {
     public class Param
     {
-        public string ParamName { get; set; }
-        public string ParamFormula { get; set; }
-        public string ParamCode { get; set; }
-        public int IdParam { get; set; }
+        public string paramName { get; set; }
+        public string paramFormula { get; set; }
+        public string paramCode { get; set; }
+        public int idParam { get; set; }
     }
 }

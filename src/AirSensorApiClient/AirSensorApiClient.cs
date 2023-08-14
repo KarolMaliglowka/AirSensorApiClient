@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using AirSensorApiClient.ViewModels;
-using Newtonsoft.Json;
+using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace AirSensorApiClient
 {
@@ -11,14 +10,13 @@ namespace AirSensorApiClient
     {
         private const string Url = "https://api.gios.gov.pl/pjp-api/rest/";
 
-        public List<Station> GetAllStations()
+        public IEnumerable<Station> GetAllStations()
         {
             var path = $"{Url}station/findAll";
             try
             {
                 var content = new WebClient().DownloadString(path);
-                var result = JsonConvert.DeserializeObject<Station[]>(content).ToList();
-                return result;
+                return JsonSerializer.Deserialize<List<Station>>(content)!;
             }
             catch (Exception ex)
             {
@@ -26,13 +24,13 @@ namespace AirSensorApiClient
             }
         }
 
-        public List<Sensor> GetSensors(int stationId)
+        public IEnumerable<Sensor> GetSensors(int stationId)
         {
             var path = $"{Url}station/sensors/{stationId}";
             try
             {
                 var content = new WebClient().DownloadString(path);
-                return JsonConvert.DeserializeObject<Sensor[]>(content).ToList();
+                return JsonSerializer.Deserialize<List<Sensor>>(content);
             }
             catch (Exception ex)
             {
@@ -46,7 +44,7 @@ namespace AirSensorApiClient
             try
             {
                 var content = new WebClient().DownloadString(path);
-                return JsonConvert.DeserializeObject<SensorsData>(content);
+                return JsonSerializer.Deserialize<SensorsData>(content);
             }
             catch (Exception ex)
             {
@@ -60,7 +58,7 @@ namespace AirSensorApiClient
             try
             {
                 var context = new WebClient().DownloadString(path);
-                return JsonConvert.DeserializeObject<IndexData>(context);
+                return JsonSerializer.Deserialize<IndexData>(context);
             }
             catch (Exception ex)
             {

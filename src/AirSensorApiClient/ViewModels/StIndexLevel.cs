@@ -2,7 +2,7 @@
 {
     public class StIndexLevel
     {
-        public int Id { get; set; }
-        public string IndexLevelName { get; set; }
+        public int id { get; set; }
+        public string indexLevelName { get; set; }
     }
 }

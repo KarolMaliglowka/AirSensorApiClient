@@ -2,8 +2,8 @@
 {
     public class City
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public Commune Commune { get; set; }
+        public int id { get; set; }
+        public string name { get; set; }
+        public Commune commune { get; set; }
     }
 }

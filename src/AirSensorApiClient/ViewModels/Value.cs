@@ -2,7 +2,7 @@
 {
     public class DataValue
     {
-        public string Date { get; set; }
-        public double? Value { get; set; }
+        public string date { get; set; }
+        public double? value { get; set; }
     }
 }

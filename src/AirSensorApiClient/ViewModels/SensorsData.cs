@@ -2,7 +2,7 @@
 {
     public class SensorsData
     {
-        public string Key { get; set; }
-        public DataValue[] Values { get; set; }
+        public string key { get; set; }
+        public DataValue[] values { get; set; }
     }
 }
